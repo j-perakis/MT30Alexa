@@ -5,10 +5,10 @@ import os
 from flask import Flask, request
 from dotenv import load_dotenv
 
-# load all environment variables
+# load all environment variables, make sure to create a .env file!
 load_dotenv()
 
-# can use this Meraki SDK for other meraki related calls!
+# Can use this Meraki SDK for other meraki related calls!
 dashboard = meraki.DashboardAPI(os.environ['MERAKI_API_TOKEN'], output_log=False, print_console=False)
 app = Flask(__name__)
 
@@ -48,12 +48,16 @@ def handle_meraki_event():
         if button_press_type == 'short':
             print("Button Name: " + button_name + "\n")
             print('SHORT BUTTON PRESS')
+            
             triggerAlexaOffRoutine()
+
             return 'Meraki Button - Short Webhook Test'
         elif button_press_type == 'long':
             print("Button Name: " + button_name + "\n")
             print('LONG BUTTON PRESS')
+
             triggerAlexaWhiteRoutine()
+
             return 'Meraki Button - Long Webhook Test'
         else:
             print('TESTS MERAKI DASHBOARD WEBHOOK')
