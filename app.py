@@ -8,6 +8,7 @@ from dotenv import load_dotenv
 # load all environment variables
 load_dotenv()
 
+# can use this Meraki SDK for other meraki related calls!
 dashboard = meraki.DashboardAPI(os.environ['MERAKI_API_TOKEN'], output_log=False, print_console=False)
 app = Flask(__name__)
 
