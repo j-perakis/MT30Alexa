@@ -27,7 +27,10 @@ def triggerAlexaWhiteRoutine():
     requests.get(url, params=params)
     return
 
-
+@app.route("/")
+def index():
+    return "Hello this is the new version!"
+    
 @app.route("/meraki_webhook", methods=["POST"])
 def handle_meraki_event():
     if request.method == 'POST':
