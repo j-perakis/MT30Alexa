@@ -9,20 +9,20 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Can use this Meraki SDK for other meraki related calls!
-dashboard = meraki.DashboardAPI(os.getenv['MERAKI_API_TOKEN'], output_log=False, print_console=False)
+dashboard = meraki.DashboardAPI(os.environ['MERAKI_API_TOKEN'], output_log=False, print_console=False)
 app = Flask(__name__)
 
 # Helpers
 def triggerAlexaOffRoutine():
     url = "https://api-v2.voicemonkey.io/trigger"
-    params = {'token':os.getenv['ROUTINE_API_TOKEN'],'device':'mt30'}
+    params = {'token':os.environ['ROUTINE_API_TOKEN'],'device':'mt30'}
 
     requests.get(url, params=params)
     return
 
 def triggerAlexaWhiteRoutine():
     url = "https://api-v2.voicemonkey.io/trigger"
-    params = {'token':os.getenv['ROUTINE_API_TOKEN'],'device':'mt30-long'}
+    params = {'token':os.environ['ROUTINE_API_TOKEN'],'device':'mt30-long'}
 
     requests.get(url, params=params)
     return
